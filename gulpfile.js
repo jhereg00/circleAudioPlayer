@@ -15,6 +15,7 @@ gulp.task('sass',require('./gulp-tasks/sass'));
 gulp.task('scripts',['lint'],require('./gulp-tasks/scripts'));
 gulp.task('images',require('./gulp-tasks/images'));
 gulp.task('html',require('./gulp-tasks/html'));
+gulp.task('audio',require('./gulp-tasks/audio'));
 gulp.task('autoguide',require('./gulp-tasks/autoguide'));
 gulp.task('lint',require('./gulp-tasks/lint'));
 gulp.task('lint-fix',require('./gulp-tasks/lint').fix);
@@ -28,10 +29,11 @@ gulp.task('watch',['build'], function () {
   gulp.watch([global.devPath + '/scss/**/*'],['sass','autoguide']);
   gulp.watch([global.devPath + '/js/**/*'],['scripts','autoguide']);
   gulp.watch([global.devPath + '/images/**/*'],['images']);
+  gulp.watch([global.devPath + '/audio/**/*'],['audio']);
   gulp.watch([global.devPath + '/**/*.html'],['html']);
 });
 // watch alias
 gulp.task('dev',['watch'],require('./gulp-tasks/webserver'));
 
 // build
-gulp.task('build',['sass','scripts','images','html','autoguide']);
+gulp.task('build',['sass','scripts','images','audio','html','autoguide']);
