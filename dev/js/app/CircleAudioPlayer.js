@@ -16,7 +16,7 @@
  *   @prop {number} size
  *   @prop {string} className - class to add to the canvas element
  *
- * @method {void} addEventListener
+ * @method {void} addEventListener (planned, not implemented)
  *   forwards to the canvas' addEventListener or the audio element's
  *   addEventListener, depending on whether or not the event string matches a
  *   media event
@@ -27,6 +27,9 @@
  *   @param {number} size
  * @method {void} appendTo
  *   @param {DOMElement} element
+ * @method {void} play
+ * @method {void} pause
+ * @method {void} draw - force a redraw
  */
 // requirements
 
@@ -274,6 +277,10 @@ CircleAudioPlayer.prototype = {
 			this._setState('playing');
 		}).bind(this));
 		this.audio.addEventListener('pause', (function () {
+			// reset when finished
+			if (this.audio.currentTime === this.audio.duration) {
+				this.audio.currentTime = 0;
+			}
 			this._setState('paused');
 		}).bind(this));
 	},

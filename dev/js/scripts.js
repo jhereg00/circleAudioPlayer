@@ -8,7 +8,7 @@ var CircleAudioPlayer = require('app/CircleAudioPlayer');
 
 // test
 window.cap = new CircleAudioPlayer({
-	audio: '/audio/Motherlode.mp3',
+	audio: 'http://www.html5tutorial.info/media/vincent.mp3',//'/audio/Motherlode.mp3',
 	borderWidth: 5
 });
 cap.appendTo(document.body);
